@@ -1,0 +1,14 @@
+﻿@model Orchard.Tags.ViewModels.TagsSearchViewModel
+@{ 
+    Html.AddTitleParts(T("Tags").ToString()); 
+    Html.AddTitleParts(T("Contents tagged with {0}", Model.TagName).ToString());
+    Model.List.Classes.Add("tagged-posts");
+    Model.List.Classes.Add("content-items");
+}
+
+<script type="text/javascript">
+    $('#page-title-widget').html('<div class="col-sm-6"><h4>@T("Contents tagged with <span>{0}</span>", Model.TagName)</h4></div>');
+</script>
+
+@Display(Model.List)
+@Display(Model.Pager)

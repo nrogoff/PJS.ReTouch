@@ -1,0 +1,72 @@
+﻿/* Orchard class overrides
+-------------------------------------------------- */
+article.widget { padding: 0; overflow: visible; }
+
+
+/* Bootstrap class overrides
+-------------------------------------------------- */
+ul { padding-left: 0; }
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html,
+body { height: 100%; }
+
+/* Wrapper for page content to push down footer */
+#utter-wrapper { min-height: 100%; height: auto; /* negative indent by footer height */ margin: 0 auto -99px; /* pad bottom by footer height */ padding: 0 0 99px; }
+
+
+/* Breadcrumb styles
+-------------------------------------------------- */
+.breadcrumb { float: right; margin-right: 15px; }
+
+
+/* List styles
+-------------------------------------------------- */
+.blog-posts, .comment-list, .search-results, .tagged-posts { list-style-type: none; padding-left: 0; }
+    .blog-posts .first { margin-top: -25px; }
+
+
+/* Blog styles
+-------------------------------------------------- */
+.post-wrapper { margin-top: -25px; /* set the max-width to your max blog post image width */ max-width: 800px; }
+
+
+/* Comment styles
+-------------------------------------------------- */
+.media > article > .pull-left { margin-right: 10px; }
+.post-comments > .comment-list > .first.last { margin-top: -40px; }
+
+
+/* Search styles
+-------------------------------------------------- */
+.search-summary { font-style: italic; margin-top: 0; }
+.search-results { clear: both; }
+    .search-results > li { padding-bottom: 15px; margin-bottom: 15px; }
+        .search-results > li:last-child { padding-bottom: 0; margin-bottom: 0; }
+    .search-results .post-wrapper { padding-bottom: 0; }
+
+
+/* oForm Widget styles
+-------------------------------------------------- */
+img[title=captcha] { }
+#oforms_captcha { }
+
+
+/* Latest Twitter Widget styles
+-------------------------------------------------- */
+ul.latest-twitter-list { list-style-type: none; }
+    ul.latest-twitter-list li { margin-bottom: 10px; }
+    ul.latest-twitter-list h5 { display: inline; }
+    ul.latest-twitter-list .navbar-brand { padding: 0; }
+
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .container > .zone > .navbar-header { margin-right: 0; margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .container > .zone > .navbar-header { margin-right: -15px; margin-left: -15px; }
+}

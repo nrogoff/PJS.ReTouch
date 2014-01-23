@@ -1,0 +1,7 @@
+﻿@{ 
+    Orchard.ContentManagement.ContentItem contentItem = Model.ContentPart.ContentItem;
+    string bodyHtml = Model.Html.ToString();
+    var body = new HtmlString(Html.Excerpt(bodyHtml, 200).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>")); 
+}
+<p>@body</p>
+<a class="btn btn-flat flat-color btn-rounded btn-sm" href="@Url.ItemDisplayUrl(contentItem)">Read More&nbsp;<i class="fa fa-long-arrow-right"></i></a>

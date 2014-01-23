@@ -1,0 +1,41 @@
+﻿@using Orchard.ContentManagement
+
+@{
+    var userCanRegister = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().UsersCanRegister;
+    var enableLostPassword = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().EnableLostPassword;
+}
+
+<div class="subpage-title">
+    <h5>@Html.TitleForPage((string)Model.Title)</h5>
+</div>
+
+<p>
+    @T("Please enter your username and password. ")
+    @if (userCanRegister) { @Html.ActionLink(T("Register").Text, "Register") @T(" if you don't have an account.") }
+</p>
+
+@Html.ValidationSummary(T("Login was unsuccessful. Please correct the errors and try again.").ToString())
+
+@using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
+    <div class="form-group">
+        <label for="username-email" class="control-label">@T("Username or Email")</label>
+        @Html.TextBox("userNameOrEmail", "", new { @class = "form-control", id = "username-email", autofocus = "autofocus", placeholder = "Username or Email" })
+        @Html.ValidationMessage("userNameOrEmail")
+    </div>
+    <div class="form-group">
+        @if (enableLostPassword) { 
+            @Html.ActionLink(T("Forgot password?").Text, "RequestLostPassword", null, new { @class = "pull-right" })
+        }
+        <label for="password" class="control-label">@T("Password")</label>
+        @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
+        @Html.ValidationMessage("password")
+    </div>
+    <div class="checkbox pull-right">
+        <label for="remember-me">
+            @Html.CheckBox("rememberMe", new { id = "remember-me" })
+            <input type="checkbox">
+            @T("Remember Me")
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">@T("Sign In")</button>
+}

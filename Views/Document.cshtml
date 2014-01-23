@@ -1,0 +1,64 @@
+@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@using PJS.ReTouch.Services;
+
+@{
+    var settings = WorkContext.Resolve<IThemeSettingsService>().GetSettings();
+    
+    RegisterLink(new LinkEntry { Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content("~/Themes/PJS.ReTouch/Content/ico/favicon.ico") });
+
+    Style.Include("http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic");
+    
+    Style.Include("bootstrap.min.css");
+    Style.Include("font-awesome.min.css");
+    Style.Include("ui.totop.css");
+    Style.Include("style.css");
+    Style.Include("skins.css");
+    Style.Include("overwrite.css");
+
+    Script.Require("jQuery").AtHead();
+    Script.Include("bootstrap.min.js");
+    Script.Include("jquery.easing.min.js");
+    Script.Include("jquery.ui.totop.min.js");
+    Script.Include("custom.js");
+    if (settings.UseHoverMenus) {
+        Script.Include("hovermenus.js");
+    }
+    
+    Script.Include("html5shiv.js").UseCondition("lt IE 9").AtHead();
+    Script.Include("respond.min.js").UseCondition("lt IE 9").AtHead();
+
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+    <html lang="@WorkContext.CurrentCulture" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 static @Html.ClassForPage()">
+<![endif]-->
+<!--[if IE 7]>
+    <html lang="@WorkContext.CurrentCulture" class="lt-ie10 lt-ie9 lt-ie8 static @Html.ClassForPage()">
+<![endif]-->
+<!--[if IE 8]>
+    <html lang="@WorkContext.CurrentCulture" class="lt-ie10 lt-ie9 static @Html.ClassForPage()">
+<![endif]-->
+<!--[if IE 9]>
+    <html lang="@WorkContext.CurrentCulture" class="lt-ie10 static @Html.ClassForPage()">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="@WorkContext.CurrentCulture" class="static @Html.ClassForPage()">
+<!--<![endif]-->
+<head>
+    <link rel="apple-touch-icon" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon.png"))">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-72.png"))">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-114.png"))">
+    <link rel="apple-touch-icon" sizes="144x144" href="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/ico/apple-touch-icon-144.png"))">
+    <title>@Html.Title(title, siteName)</title>
+    @Display(Model.Head)
+    <script>(function (d) { d.className = "dyn " + d.className.substring(6, d.className.length); })(document.documentElement);</script>
+</head>
+<body class="theme-@WorkContext.CurrentTheme.Id @settings.Skin off">
+    @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+    @Display(Model.Body)
+    @Display(Model.Tail)
+</body>
+</html>

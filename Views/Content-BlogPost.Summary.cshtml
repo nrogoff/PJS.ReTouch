@@ -1,0 +1,39 @@
+﻿@using Orchard.ContentManagement;
+
+@{ 
+    var blogPost = Model.ContentItem;
+}
+
+<div class="post-wrapper">
+    <article id="blogpost-@blogPost.Id" class="post">
+        <div class="post-thumb">
+            @foreach (var mediapart in Model.ContentItem.BlogPostPart.BlogPostImage.MediaParts) {
+                <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                using (Script.Foot()) {
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#blogpost-@blogPost.Id .post-details').css('border-top', '0');
+                        });
+                    </script>
+                }
+            }
+        </div>
+        <div class="post-details">
+            <h4 class="post-title"><a href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h4>
+            <div class="post-meta">
+                <ul class="meta-list">
+                    <li>
+                        Posted on <a href="#">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("MMMM d, yyyy")</a>
+                    </li>
+                    <li>
+                        By <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a>
+                    </li>
+                    <li>
+                        In @Display(Model.Tags)
+                    </li>
+                </ul>
+            </div>
+            @Display(Model.Summary)
+        </div>
+    </article>
+</div>

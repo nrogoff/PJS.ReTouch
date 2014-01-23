@@ -1,0 +1,23 @@
+﻿@*
+    ErrorPage(string Message, Exception Exception)
+*@
+
+<div class="col-md-6 pad-25">
+    <div class="error404">
+        <span>500</span>
+    </div>
+</div>
+<div class="col-md-6 pad-25">
+    <div class="details404">
+        <h3>An unhandled exception has occurred and the request was terminated.</h3>
+        <p>Please refresh the page. If the error persists, go back.</p>
+        @using (Html.BeginForm("index", "search", new { area = "Orchard.Search" }, FormMethod.Get, new { @class = "search-form" })) {
+            <input name="q" type="text" class="form-control" placeholder="Search ..." />
+        }
+        <a href="/" class="btn btn-flat btn-rounded flat-color"><i class="fa fa-long-arrow-left"></i>&nbsp;Back to Home</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#page-title-widget').html('<div class="col-sm-6"><h4>Oops. Something went wrong</h4></div>')
+</script>

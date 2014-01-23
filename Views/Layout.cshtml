@@ -1,0 +1,189 @@
+@functions {
+    // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+    string CalcuClassify(string[] zoneNames, string classNamePrefix) {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+        return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+    }
+}
+@{
+    /* Global includes for the theme
+    ***************************************************************/
+
+    SetMeta("charset", "utf-8");
+    SetMeta("robots", "index, follow");
+    SetMeta("X-UA-Compatible", "IE=edge,chrome=1");
+    SetMeta("viewport", "width=device-width, initial-scale=1");
+    SetMeta("apple-mobile-web-app-capable", "yes");
+
+    /* Some useful shortcuts or settings
+    ***************************************************************/
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+    /* Layout classification based on filled zones
+    ***************************************************************/
+
+    //Add classes to the wrapper div to toggle aside widget zones on and off
+    var asideClass = CalcuClassify(new[] { "AsideFirst", "AsideSecond" }, "aside-"); // for aside-1, aside-2 or aside-12 if any of the aside zones are filled
+    if (HasText(asideClass)) {
+        Model.Classes.Add(asideClass);
+    }
+
+    //Add classes to the wrapper div to toggle tripel widget zones on and off
+    var tripelClass = CalcuClassify(new[] { "TripelFirst", "TripelSecond", "TripelThird" }, "tripel-"); // for tripel-1, triple-2, etc. if any of the tripel zones are filled
+    if (HasText(tripelClass)) {
+        Model.Classes.Add(tripelClass);
+    }
+
+    //Add classes to the wrapper div to toggle quad widget zones on and off
+    var footerQuadClass = CalcuClassify(new[] { "FooterQuadFirst", "FooterQuadSecond", "FooterQuadThird", "FooterQuadFourth" }, "split-"); // for quad-1, quad-2, etc. if any of the quad zones are filled
+    if (HasText(footerQuadClass)) {
+        Model.Classes.Add(footerQuadClass);
+    }
+
+    /* Inserting some ad hoc shapes
+    ***************************************************************/
+
+    WorkContext.Layout.Header.Add(New.Branding(), "0"); // Site name and link to the home page
+    WorkContext.Layout.Footer.Add(New.Copyright(), "5"); // Copyright notice
+    WorkContext.Layout.Footer.Add(New.FooterLinks(), "5"); // Footer links
+    WorkContext.Layout.Footer.Add(New.Styler(), "0"); // Online Styler-remove or comment this line to disable styler
+
+    /* Last bit of code to prep the layout wrapper
+    ***************************************************************/
+
+    var tag = Tag(Model, "div"); // using Tag so the layout div gets the classes, id and other attributes added to the Model
+}
+<!-- Wrap all page content here -->
+<div id="utter-wrapper">
+    <div id="header" class="header" data-spy="affix" data-offset-top="10">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                @if (Model.Header != null) {
+                    @Zone(Model.Header)
+                }
+                @if (Model.Navigation != null) {
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        @Zone(Model.Navigation)
+                    </div>
+                }
+            </div>
+        </nav>
+    </div>
+    <div class="main-wrapper">
+        @if (Model.Featured != null) {
+            <section class="fullwidthbanner-container">
+                <div class="fullwidthbanner">
+                    @Zone(Model.Featured)
+                </div>
+            </section>
+        }
+        @if (Model.BeforeMain != null) {
+            <section id="page-title-wrapper" class="page-title-wrapper">
+                <div class="container">
+                    <div class="row">
+                        @Zone(Model.BeforeMain)
+                    </div>
+                </div>
+            </section>
+        }
+        <section id="main-and-sidebar" class="pad-25">
+            <div class="container">
+                <div class="row">
+                    @if (Model.AsideFirst != null) {
+                        <div class="col-md-3 sidebar">
+                            @Zone(Model.AsideFirst)&nbsp;
+                        </div>
+                    }
+                    <div class="@(HasText(asideClass) ? asideClass == "aside-1" || asideClass == "aside-2" ? "col-md-9" : asideClass == "aside-12" ? "col-md-6" : "col-md-12" : "col-md-12")">
+                        @if (Model.Messages != null) {
+                            @Zone(Model.Messages)
+                        }
+                        @if (Model.BeforeContent != null) {
+                            @Zone(Model.BeforeContent)
+                        }
+                        @if (Model.Content != null) {
+                            @Zone(Model.Content)
+                        }
+                        @if (Model.AfterContent != null) {
+                            @Zone(Model.AfterContent)
+                        }
+                    </div>
+                    @if (Model.AsideSecond != null) {
+                        <div class="col-md-3 sidebar">
+                            @Zone(Model.AsideSecond)&nbsp;
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        @if (Model.AfterMain != null) {
+            <section class="pad-25">
+                <div class="container">
+                    @Zone(Model.AfterMain)
+                </div>
+            </section>
+        }
+        @if (Model.TripelFirst != null || Model.TripelSecond != null || Model.TripelThird != null) {
+            <section class="pad-25">
+                <div class="container">
+                    <div class="row">
+                        @if (Model.TripelFirst != null) {
+                            <div class="@(HasText(tripelClass) ? tripelClass == "tripel-12" || tripelClass == "tripel-23" || tripelClass == "tripel-13" ? "col-sm-6" : tripelClass == "tripel-123" ? "col-sm-4" : "col-sm-12" : "col-sm-12") col-xs-12">
+                                @Zone(Model.TripelFirst)
+                            </div>
+                        }
+                        @if (Model.TripelSecond != null) {
+                            <div class="@(HasText(tripelClass) ? tripelClass == "tripel-12" || tripelClass == "tripel-23" || tripelClass == "tripel-13" ? "col-sm-6" : tripelClass == "tripel-123" ? "col-sm-4" : "col-sm-12" : "col-sm-12") col-xs-12">
+                                @Zone(Model.TripelSecond)
+                            </div>
+                        }
+                        @if (Model.TripelThird != null) {
+                            <div class="@(HasText(tripelClass) ? tripelClass == "tripel-12" || tripelClass == "tripel-23" || tripelClass == "tripel-13" ? "col-sm-6" : tripelClass == "tripel-123" ? "col-sm-4" : "col-sm-12" : "col-sm-12") col-xs-12">
+                                @Zone(Model.TripelThird)
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+    @if (Model.FooterQuadFirst != null || Model.FooterQuadSecond != null || Model.FooterQuadThird != null || Model.FooterQuadFourth != null) {
+        <div id="footer-1" class="footer">
+            <div class="container">
+                <div class="row">
+                    @if (Model.FooterQuadFirst != null) {
+                        <div class="@(HasText(footerQuadClass) ? footerQuadClass == "split-1" || footerQuadClass == "split-2" || footerQuadClass == "split-3" || footerQuadClass == "split-4" ? "col-md-12" : footerQuadClass == "split-12" || footerQuadClass == "split-13" || footerQuadClass == "split-14" || footerQuadClass == "split-23" || footerQuadClass == "split-24" || footerQuadClass == "split-34" ? "col-md-6" : footerQuadClass == "split-123" || footerQuadClass == "split-124" || footerQuadClass == "split-134" || footerQuadClass == "split-234" ? "col-md-4" : "col-md-3" : "col-md-12")">
+                            @Zone(Model.FooterQuadFirst)
+                        </div>
+                    }
+                    @if (Model.FooterQuadSecond != null) {
+                        <div class="@(HasText(footerQuadClass) ? footerQuadClass == "split-1" || footerQuadClass == "split-2" || footerQuadClass == "split-3" || footerQuadClass == "split-4" ? "col-md-12" : footerQuadClass == "split-12" || footerQuadClass == "split-13" || footerQuadClass == "split-14" || footerQuadClass == "split-23" || footerQuadClass == "split-24" || footerQuadClass == "split-34" ? "col-md-6" : footerQuadClass == "split-123" || footerQuadClass == "split-124" || footerQuadClass == "split-134" || footerQuadClass == "split-234" ? "col-md-4" : "col-md-3" : "col-md-12")">
+                            @Zone(Model.FooterQuadSecond)
+                        </div>
+                    }
+                    @if (Model.FooterQuadThird != null) {
+                        <div class="@(HasText(footerQuadClass) ? footerQuadClass == "split-1" || footerQuadClass == "split-2" || footerQuadClass == "split-3" || footerQuadClass == "split-4" ? "col-md-12" : footerQuadClass == "split-12" || footerQuadClass == "split-13" || footerQuadClass == "split-14" || footerQuadClass == "split-23" || footerQuadClass == "split-24" || footerQuadClass == "split-34" ? "col-md-6" : footerQuadClass == "split-123" || footerQuadClass == "split-124" || footerQuadClass == "split-134" || footerQuadClass == "split-234" ? "col-md-4" : "col-md-3" : "col-md-12")">
+                            @Zone(Model.FooterQuadThird)
+                        </div>
+                    }
+                    @if (Model.FooterQuadFourth != null) {
+                        <div class="@(HasText(footerQuadClass) ? footerQuadClass == "split-1" || footerQuadClass == "split-2" || footerQuadClass == "split-3" || footerQuadClass == "split-4" ? "col-md-12" : footerQuadClass == "split-12" || footerQuadClass == "split-13" || footerQuadClass == "split-14" || footerQuadClass == "split-23" || footerQuadClass == "split-24" || footerQuadClass == "split-34" ? "col-md-6" : footerQuadClass == "split-123" || footerQuadClass == "split-124" || footerQuadClass == "split-134" || footerQuadClass == "split-234" ? "col-md-4" : "col-md-3" : "col-md-12")">
+                            @Zone(Model.FooterQuadFourth)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@if (Model.Footer != null) {
+    <div id="footer-2" class="footer">
+        <div class="container">
+            <div class="row">
+                @Zone(Model.Footer)
+            </div>
+        </div>
+    </div>
+}

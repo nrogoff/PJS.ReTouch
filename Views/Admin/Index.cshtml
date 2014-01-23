@@ -1,0 +1,110 @@
+﻿@model PJS.ReTouch.ViewModels.ThemeSettingsViewModel
+
+@{
+    Script.Require("jQuery");
+    
+    using(Script.Foot()) {
+        <script type="text/javascript">
+            $(function () {
+                $('.color-skin').on('click', function (e) {
+                    $('.color-skin.active').removeClass('active');
+                    $('#' + $(this).attr('id')).addClass('active');
+                    $('#Skin').val($(this).attr('id'));
+                });
+            });
+        </script>
+    }
+}
+
+<style type="text/css">
+    .list-inline { padding-left: 0; list-style: none; }
+        .list-inline > li { display: inline-block; padding: 10px 5px 0 5px; }
+            .list-inline > li .color-skin { width: 35px; height: 35px; cursor: pointer; }
+            .list-inline > li #color-skin-1.color-skin { background-color: #2ecc71; }
+            .list-inline > li #color-skin-2.color-skin { background-color: #1abc9c; }
+            .list-inline > li #color-skin-3.color-skin { background-color: #3498db; }
+            .list-inline > li #color-skin-4.color-skin { background-color: #9b59b6; }
+            .list-inline > li #color-skin-5.color-skin { background-color: #16a085; }
+            .list-inline > li #color-skin-6.color-skin { background-color: #27ae60; }
+            .list-inline > li #color-skin-7.color-skin { background-color: #2980b9; }
+            .list-inline > li #color-skin-8.color-skin { background-color: #8e44ad; }
+            .list-inline > li #color-skin-9.color-skin { background-color: #f1c40f; }
+            .list-inline > li #color-skin-10.color-skin { background-color: #e67e22; }
+            .list-inline > li #color-skin-11.color-skin { background-color: #e74c3c; }
+            .list-inline > li #color-skin-12.color-skin { background-color: #f39c12; }
+            .list-inline > li #color-skin-13.color-skin { background-color: #d35400; }
+            .list-inline > li #color-skin-14.color-skin { background-color: #c0392b; }
+            .list-inline > li #color-skin-15.color-skin { background-color: #95a5a6; }
+            .list-inline > li #color-skin-16.color-skin { background-color: #7f8c8d; }
+            .list-inline > li .color-skin.active, .list-inline > li .color-skin:hover { outline: 2px solid #2c3e50; }
+</style>
+
+@{ Layout.Title = string.Format("ReTouch » {0}", T("Options").ToString()); }
+
+@using (Html.BeginFormAntiForgeryPost()) {
+    Html.ValidationSummary();
+    
+    <fieldset>
+        <span id="lblSkin" class="hint">@T("Select the skin color that you want use")</span>
+        <ul class="list-inline">
+            <li>
+                <div id="color-skin-1" class="color-skin @(Model.Skin == "color-skin-1" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-2" class="color-skin @(Model.Skin == "color-skin-2" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-3" class="color-skin @(Model.Skin == "color-skin-3" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-4" class="color-skin @(Model.Skin == "color-skin-4" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-5" class="color-skin @(Model.Skin == "color-skin-5" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-6" class="color-skin @(Model.Skin == "color-skin-6" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-7" class="color-skin @(Model.Skin == "color-skin-7" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-8" class="color-skin @(Model.Skin == "color-skin-8" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-9" class="color-skin @(Model.Skin == "color-skin-9" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-10" class="color-skin @(Model.Skin == "color-skin-10" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-11" class="color-skin @(Model.Skin == "color-skin-11" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-12" class="color-skin @(Model.Skin == "color-skin-12" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-13" class="color-skin @(Model.Skin == "color-skin-13" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-14" class="color-skin @(Model.Skin == "color-skin-14" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-15" class="color-skin @(Model.Skin == "color-skin-15" ? "active" : string.Empty)"></div>
+            </li>
+            <li>
+                <div id="color-skin-16" class="color-skin @(Model.Skin == "color-skin-16" ? "active" : string.Empty)"></div>
+            </li>
+        </ul>
+    </fieldset>
+    
+    <fieldset>
+        @Html.CheckBoxFor(m => m.UseHoverMenus)@T("Use Hover Menus")
+        <span id="lblUseHoverMenu" class="hint">@T("Select this checkbox to use hover-over menu items")</span>
+    </fieldset>
+    
+    <fieldset>
+        @Html.HiddenFor(m => m.Skin)
+        <button class="primaryAction" type="submit" name="submit.Save" value="submit.Save">@T("Save")</button>
+    </fieldset>
+}
