@@ -1,0 +1,82 @@
+﻿@using System.Linq;
+@using Orchard.MediaLibrary.Models
+
+@{
+    Script.Include("jquery.isotope.min.js");
+    Script.Include("jquery.prettyPhoto.js");
+
+    Style.Include("prettyPhoto.css");
+
+    var images = (IEnumerable<MediaPart>)Model.Images;
+    var categories = images.OrderBy(x => x.AlternateText).Where(x => !string.IsNullOrWhiteSpace(x.AlternateText)).Select(x => x.AlternateText).Distinct();
+    var count = images.Count();
+
+    if (images != null && count > 0) {
+    <section id="portfolio-4" class="pad-25">
+        <div class="container">
+            <ul class="portfolio-filter nav nav-pills">
+                <li class="active"><a href="#" data-filter="*">All</a></li>
+                @foreach (var category in categories) {
+                    <li><a href="#" data-filter=".@category.Replace(" ", "-")">@category</a></li>
+                }
+            </ul>
+            <div class="row">
+                <div id="isotope-portfolio-container">
+                    @foreach (var img in images) {
+                        <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item-wrapper @(string.IsNullOrWhiteSpace(img.AlternateText) ? string.Empty : img.AlternateText.Replace(" ", "-"))">
+                            <div class="portfolio-item">
+                                <div class="portfolio-thumb">
+                                    <img src="@img.MediaUrl" class="img-responsive" alt="1st Portfolio Thumb">
+                                    <div class="image-overlay"></div>
+                                    <a href="@img.MediaUrl" rel="prettyPhoto[pp_gal]" class="portfolio-zoom"><i class="fa fa-eye"></i></a>
+                                </div>
+                                <div class="portfolio-details">
+                                    <h5>@img.Title</h5>
+                                    <p>@img.Caption</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    }
+
+    using (Script.Foot()) {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // PrettyPhoto
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                    theme: 'light_square',
+                    social_tools: false
+                });
+            });
+
+            // Isotope Portfolio
+            var $container = $('#isotope-portfolio-container');
+            var $filter = $('.portfolio-filter');
+
+            $(window).load(function () {
+                // Initialize Isotope
+                $container.isotope({
+                    itemSelector: '.portfolio-item-wrapper'
+                });
+                $('.portfolio-filter a').click(function () {
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({ filter: selector });
+                    return false;
+                });
+                $filter.find('a').click(function () {
+                    var selector = $(this).attr('data-filter');
+                    $filter.find('a').parent().removeClass('active');
+                    $(this).parent().addClass('active');
+                });
+            });
+
+            $(window).smartresize(function () {
+                $container.isotope('reLayout');
+            });
+        </script>
+    }
+}

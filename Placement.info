@@ -27,6 +27,11 @@
     </Match>
   </Match>
 
+  <Match ContentType="ZenGallery">
+    <Place Parts_Title="/BeforeMain:0"
+           Parts_Common_Metadata="-"/>
+  </Match>
+  
   <Match Path="/">
     <Place Parts_Title="-"/>
   </Match>

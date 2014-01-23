@@ -64,16 +64,76 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\about-1.jpg" />
+    <Content Include="Content\about-2.jpg" />
+    <Content Include="Content\about-3.jpg" />
+    <Content Include="Content\client-1.jpg" />
+    <Content Include="Content\client-2.jpg" />
+    <Content Include="Content\client-3.jpg" />
+    <Content Include="Content\client-4.jpg" />
+    <Content Include="Content\client-5.jpg" />
+    <Content Include="Content\client-6.jpg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\ico\favicon.ico" />
+    <Content Include="Content\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Content\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Content\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Content\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Content\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Content\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Content\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Content\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Content\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Content\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Content\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Content\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Content\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Content\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\team-1.jpg" />
+    <Content Include="Content\team-2.jpg" />
+    <Content Include="Content\team-3.jpg" />
+    <Content Include="Content\team-4.jpg" />
+    <Content Include="Content\team-5.jpg" />
+    <Content Include="Content\team-6.jpg" />
+    <Content Include="Content\team-7.jpg" />
+    <Content Include="Content\testimonial-1.jpg" />
+    <Content Include="Content\testimonial-2.jpg" />
+    <Content Include="Content\testimonial-3.jpg" />
     <Content Include="Content\ui.totop.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\hovermenus.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\jquery.carouFredSel-6.2.1.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
+    <Content Include="Scripts\jquery.prettyPhoto.js" />
     <Content Include="Scripts\jquery.ui.totop.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\styler.js" />
@@ -82,6 +142,7 @@
     <Content Include="Styles\font-awesome.css" />
     <Content Include="Styles\font-awesome.min.css" />
     <Content Include="Styles\overwrite.css" />
+    <Content Include="Styles\prettyPhoto.css" />
     <Content Include="Styles\skins.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Styles\ui.totop.css" />
@@ -334,6 +395,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Styler.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleAbout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleTeam.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleServices.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleFaqs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\ZenGallery.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
