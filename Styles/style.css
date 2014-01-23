@@ -330,24 +330,24 @@ a:focus {
 }
 
 .social-links > li a.facebook:hover {
-    background-color: #2f5a9a;
+    background-color: #2b4b90;
     color: #fff !important;
-    border-color: #2f5a9a;
+    border-color: #2b4b90;
 }
 .social-links > li a.twitter:hover {
-    background-color: #3abdd1;
+    background-color: #1c95d0;
     color: #fff !important;
-    border-color: #3abdd1;
+    border-color: #1c95d0;
 }
 .social-links > li a.google-plus:hover {
-    background-color: #363636;
+    background-color: #d34332;
     color: #fff !important;
-    border-color: #363636;
+    border-color: #d34332;
 }
 .social-links > li a.pinterest:hover {
-    background-color: #d13a3a;
+    background-color: #c51e25;
     color: #fff !important;
-    border-color: #d13a3a;
+    border-color: #c51e25;
 }
 .social-links > li a.rss:hover {
     background-color: #f15200;
