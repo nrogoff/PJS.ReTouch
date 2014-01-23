@@ -175,6 +175,12 @@ ul.latest-twitter-list { list-style-type: none; }
     ul.latest-twitter-list .navbar-brand { padding: 0; }
 
 
+/* Zen Gallery styles
+-------------------------------------------------- */
+.portfolio-filter { padding: 25px 15px; }
+.portfolio-item:hover .portfolio-thumb .portfolio-zoom { margin-left: -24px; }
+
+
 /* Responsive styles */
 @media (min-width: 768px) {
     .container > .zone > .navbar-header { margin-right: 0; margin-left: 0; }
