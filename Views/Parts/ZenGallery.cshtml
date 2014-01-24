@@ -8,20 +8,31 @@
     Style.Include("prettyPhoto.css");
 
     var images = (IEnumerable<MediaPart>)Model.Images;
-    var categories = images.OrderBy(x => x.AlternateText).Where(x => !string.IsNullOrWhiteSpace(x.AlternateText)).Select(x => x.AlternateText).Distinct();
+    
     var count = images.Count();
+
+    string categories = string.Empty;
+    
+    foreach (var category in images.Where(x => !string.IsNullOrWhiteSpace(x.AlternateText)).Select(x => x.AlternateText)) {
+        categories += category + ",";
+    }
+    
+    char[] delimiters = new char[] { ',' };
+    string[] categoryList = categories.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+    
+    var distinctCategories = categoryList.Distinct().OrderBy(x => x).ToArray();
 
     if (images != null && count > 0) {
     <section id="portfolio-4">
         <ul class="portfolio-filter nav nav-pills">
             <li class="active"><a href="#" data-filter="*">All</a></li>
-            @foreach (var category in categories) {
+            @foreach (var category in distinctCategories) {
                 <li><a href="#" data-filter=".@category.Replace(" ", "-")">@category</a></li>
             }
         </ul>
         <div id="isotope-portfolio-container">
-            @foreach (var img in images) {
-                <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item-wrapper @(string.IsNullOrWhiteSpace(img.AlternateText) ? string.Empty : img.AlternateText.Replace(" ", "-"))">
+            @foreach (var img in images.OrderBy(x => x.Title)) {
+                <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item-wrapper @(string.IsNullOrWhiteSpace(img.AlternateText) ? string.Empty : img.AlternateText.Replace(" ", "-").Replace(",", " "))">
                     <div class="portfolio-item">
                         <div class="portfolio-thumb">
                             <img src="@img.MediaUrl" class="img-responsive" alt="1st Portfolio Thumb">
