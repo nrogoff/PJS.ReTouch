@@ -53,8 +53,10 @@
     
     // Sample Content
     if (Request.RawUrl == "/") {
-        //WorkContext.Layout.Featured.Add(New.Slider(), "0");
-        //WorkContext.Layout.Content.Add(New.Home(), "0");
+        //WorkContext.Layout.Content.Add(New.SampleHome(), "0");
+        WorkContext.Layout.TripelFirst.Add(New.SampleTripel1(), "0");
+        WorkContext.Layout.TripelSecond.Add(New.SampleTripel2(), "0");
+        WorkContext.Layout.TripelThird.Add(New.SampleTripel3(), "0");
     }
     else if (Request.RawUrl == "/pages/about-us") {
         WorkContext.Layout.Content.Add(New.SampleAbout(), "0");
@@ -69,7 +71,13 @@
         WorkContext.Layout.Content.Add(New.SampleFaqs(), "0");
     }
     else if (Request.RawUrl == "/features/ui-elements") {
-        //WorkContext.Layout.Content.Add(New.UI(), "0");
+        WorkContext.Layout.Content.Add(New.SampleUI(), "0");
+    }
+    else if (Request.RawUrl == "/features/buttons") {
+        WorkContext.Layout.Content.Add(New.SampleButtons(), "0");
+    }
+    else if (Request.RawUrl == "/features/pricing-tables") {
+        WorkContext.Layout.Content.Add(New.SamplePricing(), "0");
     }
 
     /* Last bit of code to prep the layout wrapper

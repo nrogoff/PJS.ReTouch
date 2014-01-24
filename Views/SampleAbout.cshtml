@@ -1,5 +1,38 @@
 ﻿@{
     Script.Include("jquery.carouFredSel-6.2.1.js");
+
+    using (Script.Foot()) {
+        <script type="text/javascript">
+            // jQuery CarouFredSel 
+            var caroufredsel = function () {
+                $('#caroufredsel-clients-container').carouFredSel({
+                    responsive: true,
+                    scroll: 1,
+                    circular: false,
+                    infinite: false,
+                    items: {
+                        visible: {
+                            min: 1,
+                            max: 4
+                        }
+                    },
+                    prev: '#client-prev',
+                    next: '#client-next',
+                    auto: {
+                        play: false
+                    }
+                });
+            };
+
+            $(window).load(function () {
+                caroufredsel();
+            });
+
+            $(window).resize(function () {
+                caroufredsel();
+            });
+        </script>
+    }
 }
 
 <section id="our-story">
@@ -236,31 +269,3 @@
     <!-- /#caroufredsel-clients-container -->
 </section>
 <!-- /#our-clients -->
-<script type="text/javascript">
-    // jQuery CarouFredSel 
-    var caroufredsel = function () {
-        $('#caroufredsel-clients-container').carouFredSel({
-            responsive: true,
-            scroll: 1,
-            circular: false,
-            infinite: false,
-            items: {
-                visible: {
-                    min: 1,
-                    max: 4
-                }
-            },
-            prev: '#client-prev',
-            next: '#client-next',
-            auto: {
-                play: false
-            }
-        });
-    };
-    $(window).load(function () {
-        caroufredsel();
-    });
-    $(window).resize(function () {
-        caroufredsel();
-    });
-</script>

@@ -146,6 +146,8 @@
     <Content Include="Styles\skins.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Styles\ui.totop.css" />
+    <None Include="Views\SampleTripel1.cshtml" />
+    <None Include="Views\SampleTripel2.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\Web.config" />
@@ -410,6 +412,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts\ZenGallery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleUI.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleButtons.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SamplePricing.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SampleTripel3.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
