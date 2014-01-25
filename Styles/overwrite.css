@@ -323,3 +323,8 @@ ul.latest-twitter-list { list-style-type: none; }
 @media (max-width: 768px) {
     .container > .zone > .navbar-header { margin-right: -15px; margin-left: -15px; }
 }
+
+
+/* Template fixes
+-------------------------------------------------- */
+.team-member { overflow: inherit; }
