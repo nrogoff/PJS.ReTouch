@@ -10,7 +10,7 @@
     <article class="post">
         <div class="post-thumb">
             @foreach (var mediapart in Model.ContentItem.BlogPostPart.BlogPostImage.MediaParts) {
-                <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" class="img-responsive" />
                 using (Script.Foot()) {
                     <script type="text/javascript">
                         $(function () {
