@@ -2,19 +2,23 @@
 
 @{ 
     var blogPost = Model.ContentItem;
+    var part = (Orchard.ContentManagement.ContentPart)Model.ContentItem.BlogPostPart;
+    var imageField = part.Fields.Where(field => field.PartFieldDefinition.Name == "BlogPostImage").SingleOrDefault() as MediaLibraryPickerField;
 }
 
 <div class="post-wrapper">
     <article id="blogpost-@blogPost.Id" class="post">
         <div class="post-thumb">
-            @foreach (var mediapart in Model.ContentItem.BlogPostPart.BlogPostImage.MediaParts) {
-                <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" class="img-responsive" />
-                using (Script.Foot()) {
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#blogpost-@blogPost.Id .post-details').css('border-top', '0');
-                        });
-                    </script>
+            @if (imageField != null) {
+                foreach (var mediapart in Model.ContentItem.BlogPostPart.BlogPostImage.MediaParts) {
+                    <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" class="img-responsive" />
+                    using (Script.Foot()) {
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#blogpost-@blogPost.Id .post-details').css('border-top', '0');
+                            });
+                        </script>
+                    }
                 }
             }
         </div>

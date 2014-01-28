@@ -15,11 +15,15 @@ else {
         @foreach (dynamic post in blogPosts) {
             string title = post.Title;
             ContentItem contentItem = post.ContentItem;
+            var part = (Orchard.ContentManagement.ContentPart)post.ContentItem.BlogPostPart;
+            var imageField = part.Fields.Where(field => field.PartFieldDefinition.Name == "BlogPostImage").SingleOrDefault() as MediaLibraryPickerField;
             DateTime date = post.ContentItem.CommonPart.CreatedUtc;
 
             <li>
-                @foreach (var mediapart in post.ContentItem.BlogPostPart.BlogPostImage.MediaParts) {
-                    <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                @if (imageField != null) {
+                    foreach (var mediapart in imageField.MediaParts) {
+                        <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" class="img-responsive" />
+                    }
                 }
                 <h5>
                     @Html.ItemDisplayLink(title, contentItem)
