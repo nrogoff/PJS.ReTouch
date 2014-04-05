@@ -1,7 +1,15 @@
 ﻿@model dynamic
 
-<div class="subpage-title">
-    <h5>@Html.TitleForPage(T("Challenge Email").ToString())</h5>
-</div>
+@using (Script.Foot()) {
+    <script type="text/javascript">
+        $(function () {
+            $(".alert").alert();
+        });
+    </script>
+}
 
-<p>@T("Your email address has been validated.") </p>
+<div class="alert alert-dismissable alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <strong>@Html.TitleForPage(T("Challenge Email Sent").ToString())</strong>
+    <p>@T("Your email address has been validated.")</p>
+</div>

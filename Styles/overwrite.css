@@ -7,6 +7,9 @@ article.widget { padding: 0; overflow: visible; }
 -------------------------------------------------- */
 ul { padding-left: 0; }
 
+#header .navbar-brand { padding-top: 25px; padding-bottom: 25px; }
+#header.affix .navbar-brand { padding-top: 10px; padding-bottom: 10px; }
+
 .form-control { color: #2c3e50; border: 1px solid #dce4ec; }
     .form-control:focus { outline: 0; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(26, 188, 156, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(26, 188, 156, 0.6); }
 .form-control,
@@ -328,3 +331,11 @@ ul.latest-twitter-list { list-style-type: none; }
 /* Template fixes
 -------------------------------------------------- */
 .team-member { overflow: inherit; }
+
+
+/* Form styles
+-------------------------------------------------- */
+.field-validation-error { color: #a94442 !important; }
+.validation-summary-errors { display: inline-block; }
+    .validation-summary-errors ul { list-style: none; margin: 0; padding: 0; }
+        .validation-summary-errors ul li { display: inline-block; color: #ffffff !important; }

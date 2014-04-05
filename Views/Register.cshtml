@@ -1,32 +1,44 @@
-﻿<div class="subpage-title">
+﻿@{
+    using (Script.Foot()) {
+        <script type="text/javascript">
+            $(function () {
+                $(".alert").alert();
+            });
+        </script>
+    }
+}
+
+@if (Html.ValidationSummary() != null) {
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Error:</strong>
+        <p>@Html.ValidationSummary()</p>
+    </div>
+}
+
+<div class="subpage-title">
     <h5>@Html.TitleForPage(T("Create a New Account").ToString())</h5>
 </div>
 
 <p>@T("Use the form below to create a new account.")</p>
 <p>@T("Passwords are required to be a minimum of {0} characters in length.", ViewData["PasswordLength"])</p>
 
-@Html.ValidationSummary(T("Account creation was unsuccessful. Please correct the errors and try again.").ToString()) 
-
 @using (Html.BeginFormAntiForgeryPost(Url.Action("Register"), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
     <div class="form-group">
         <label for="username" class="control-label">@T("Username")</label>
         @Html.TextBox("username", "", new { @class = "form-control", id = "username", autofocus = "autofocus", placeholder = "Username" })
-        @Html.ValidationMessage("username")
     </div>
     <div class="form-group">
         <label for="email" class="control-label">@T("Email")</label>
         @Html.TextBox("email", "", new { @class = "form-control", id = "email", placeholder = "Email" })
-        @Html.ValidationMessage("email")
     </div>
     <div class="form-group">
         <label for="password" class="control-label">@T("Password")</label>
         @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
-        @Html.ValidationMessage("password")
     </div>
     <div class="form-group">
         <label for="confirmPassword" class="control-label">@T("Confirm Password")</label>
         @Html.Password("confirmPassword", null, new { @class = "form-control", placeholder = "Confirm Password" })
-        @Html.ValidationMessage("confirmPassword")
     </div>
     <div class="form-group">
         <span class="pull-right" style="margin: 10px 0;">Already have an account? @Html.ActionLink(T("Sign In").ToString(), "LogOn", new { Controller = "Account", Area = "Orchard.Users" })</span>

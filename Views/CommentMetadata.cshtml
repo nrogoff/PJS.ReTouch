@@ -4,4 +4,4 @@
     //remove Record from comment.Record when moving to Orchard 1.7
     //add "@Url.RouteUrl(comment.Record.CommentedOnContentItemMetadata.DisplayRouteValues) + " before #comment
 }
-@comment.Record.CommentDateUtc.GetValueOrDefault().ToLocalTime().ToString("MMMM d, yyyy")
+@comment.Record.CommentDateUtc.GetValueOrDefault().ToLocalTime().ToString("MMMM d, yyyy h:mm tt")
