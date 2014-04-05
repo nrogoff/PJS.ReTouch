@@ -50,35 +50,6 @@
     WorkContext.Layout.Footer.Add(New.FooterLinks(), "5"); // Footer links
     
     WorkContext.Layout.Footer.Add(New.Styler(), "0"); // Online Styler-remove or comment this line to disable styler
-    
-    // Sample Content
-    if (Request.RawUrl == "/") {
-        //WorkContext.Layout.Content.Add(New.SampleHome(), "0");
-        WorkContext.Layout.TripelFirst.Add(New.SampleTripel1(), "0");
-        WorkContext.Layout.TripelSecond.Add(New.SampleTripel2(), "0");
-        WorkContext.Layout.TripelThird.Add(New.SampleTripel3(), "0");
-    }
-    else if (Request.RawUrl == "/pages/about-us") {
-        WorkContext.Layout.Content.Add(New.SampleAbout(), "0");
-    }
-    else if (Request.RawUrl == "/pages/our-team") {
-        WorkContext.Layout.Content.Add(New.SampleTeam(), "0");
-    }
-    else if (Request.RawUrl == "/pages/services") {
-        WorkContext.Layout.Content.Add(New.SampleServices(), "0");
-    }
-    else if (Request.RawUrl == "/pages/faqs") {
-        WorkContext.Layout.Content.Add(New.SampleFaqs(), "0");
-    }
-    else if (Request.RawUrl == "/features/ui-elements") {
-        WorkContext.Layout.Content.Add(New.SampleUI(), "0");
-    }
-    else if (Request.RawUrl == "/features/buttons") {
-        WorkContext.Layout.Content.Add(New.SampleButtons(), "0");
-    }
-    else if (Request.RawUrl == "/features/pricing-tables") {
-        WorkContext.Layout.Content.Add(New.SamplePricing(), "0");
-    }
 
     /* Last bit of code to prep the layout wrapper
     ***************************************************************/
