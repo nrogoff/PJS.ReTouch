@@ -339,3 +339,40 @@ ul.latest-twitter-list { list-style-type: none; }
 .validation-summary-errors { display: inline-block; }
     .validation-summary-errors ul { list-style: none; margin: 0; padding: 0; }
         .validation-summary-errors ul li { display: inline-block; color: #ffffff !important; }
+
+
+/* Pagination
+-------------------------------------------------- */
+.color-skin-1 .pagination > li > a, .color-skin-1 .pagination > li > span { background-color: #2ecc71; border: 1px solid transparent; }
+.color-skin-2 .pagination > li > a, .color-skin-2 .pagination > li > span { background-color: #1abc9c; border: 1px solid transparent; }
+.color-skin-3 .pagination > li > a, .color-skin-3 .pagination > li > span { background-color: #3498db; border: 1px solid transparent; }
+.color-skin-4 .pagination > li > a, .color-skin-4 .pagination > li > span { background-color: #9b59b6; border: 1px solid transparent; }
+.color-skin-5 .pagination > li > a, .color-skin-5 .pagination > li > span { background-color: #16a085; border: 1px solid transparent; }
+.color-skin-6 .pagination > li > a, .color-skin-6 .pagination > li > span { background-color: #27ae60; border: 1px solid transparent; }
+.color-skin-7 .pagination > li > a, .color-skin-7 .pagination > li > span { background-color: #2980b9; border: 1px solid transparent; }
+.color-skin-8 .pagination > li > a, .color-skin-8 .pagination > li > span { background-color: #8e44ad; border: 1px solid transparent; }
+.color-skin-9 .pagination > li > a, .color-skin-9 .pagination > li > span { background-color: #f1c40f; border: 1px solid transparent; }
+.color-skin-10 .pagination > li > a, .color-skin-10 .pagination > li > span { background-color: #e67e22; border: 1px solid transparent; }
+.color-skin-11 .pagination > li > a, .color-skin-11 .pagination > li > span { background-color: #e74c3c; border: 1px solid transparent; }
+.color-skin-12 .pagination > li > a, .color-skin-12 .pagination > li > span { background-color: #f39c12; border: 1px solid transparent; }
+.color-skin-13 .pagination > li > a, .color-skin-13 .pagination > li > span { background-color: #d35400; border: 1px solid transparent; }
+.color-skin-14 .pagination > li > a, .color-skin-14 .pagination > li > span { background-color: #c0392b; border: 1px solid transparent; }
+.color-skin-15 .pagination > li > a, .color-skin-15 .pagination > li > span { background-color: #95a5a6; border: 1px solid transparent; }
+.color-skin-16 .pagination > li > a, .color-skin-16 .pagination > li > span { background-color: #7f8c8d; border: 1px solid transparent; }
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus { background-color: #ecf0f1; }
+.color-skin-1 .pagination > .active > a, .color-skin-1 .pagination > .active > span, .color-skin-1 .pagination > .active > a:hover, .color-skin-1 .pagination > .active > span:hover, .color-skin-1 .pagination > .active > a:focus, .color-skin-1 .pagination > .active > span:focus { background-color: #1e874b; border-color: #1e874b; }
+.color-skin-2 .pagination > .active > a, .color-skin-2 .pagination > .active > span, .color-skin-2 .pagination > .active > a:hover, .color-skin-2 .pagination > .active > span:hover, .color-skin-2 .pagination > .active > a:focus, .color-skin-2 .pagination > .active > span:focus { background-color: #107865; border-color: #107865; }
+.color-skin-3 .pagination > .active > a, .color-skin-3 .pagination > .active > span, .color-skin-3 .pagination > .active > a:hover, .color-skin-3 .pagination > .active > span:hover, .color-skin-3 .pagination > .active > a:focus, .color-skin-3 .pagination > .active > span:focus { background-color: #236696; border-color: #236696; }
+.color-skin-4 .pagination > .active > a, .color-skin-4 .pagination > .active > span, .color-skin-4 .pagination > .active > a:hover, .color-skin-4 .pagination > .active > span:hover, .color-skin-4 .pagination > .active > a:focus, .color-skin-4 .pagination > .active > span:focus { background-color: #613670; border-color: #613670; }
+.color-skin-5 .pagination > .active > a, .color-skin-5 .pagination > .active > span, .color-skin-5 .pagination > .active > a:hover, .color-skin-5 .pagination > .active > span:hover, .color-skin-5 .pagination > .active > a:focus, .color-skin-5 .pagination > .active > span:focus { background-color: #0c5c4d; border-color: #0c5c4d; }
+.color-skin-6 .pagination > .active > a, .color-skin-6 .pagination > .active > span, .color-skin-6 .pagination > .active > a:hover, .color-skin-6 .pagination > .active > span:hover, .color-skin-6 .pagination > .active > a:focus, .color-skin-6 .pagination > .active > span:focus { background-color: #16693a; border-color: #16693a; }
+.color-skin-7 .pagination > .active > a, .color-skin-7 .pagination > .active > span, .color-skin-7 .pagination > .active > a:hover, .color-skin-7 .pagination > .active > span:hover, .color-skin-7 .pagination > .active > a:focus, .color-skin-7 .pagination > .active > span:focus { background-color: #194f75; border-color: #194f75; }
+.color-skin-8 .pagination > .active > a, .color-skin-8 .pagination > .active > span, .color-skin-8 .pagination > .active > a:hover, .color-skin-8 .pagination > .active > span:hover, .color-skin-8 .pagination > .active > a:focus, .color-skin-8 .pagination > .active > span:focus { background-color: #562869; border-color: #562869; }
+.color-skin-9 .pagination > .active > a, .color-skin-9 .pagination > .active > span, .color-skin-9 .pagination > .active > a:hover, .color-skin-9 .pagination > .active > span:hover, .color-skin-9 .pagination > .active > a:focus, .color-skin-9 .pagination > .active > span:focus { background-color: #ad8f09; border-color: #ad8f09; }
+.color-skin-10 .pagination > .active > a, .color-skin-10 .pagination > .active > span, .color-skin-10 .pagination > .active > a:hover, .color-skin-10 .pagination > .active > span:hover, .color-skin-10 .pagination > .active > a:focus, .color-skin-10 .pagination > .active > span:focus { background-color: #a15916; border-color: #a15916; }
+.color-skin-11 .pagination > .active > a, .color-skin-11 .pagination > .active > span, .color-skin-11 .pagination > .active > a:hover, .color-skin-11 .pagination > .active > span:hover, .color-skin-11 .pagination > .active > a:focus, .color-skin-11 .pagination > .active > span:focus { background-color: #a33729; border-color: #a33729; }
+.color-skin-12 .pagination > .active > a, .color-skin-12 .pagination > .active > span, .color-skin-12 .pagination > .active > a:hover, .color-skin-12 .pagination > .active > span:hover, .color-skin-12 .pagination > .active > a:focus, .color-skin-12 .pagination > .active > span:focus { background-color: #ad720a; border-color: #ad720a; }
+.color-skin-13 .pagination > .active > a, .color-skin-13 .pagination > .active > span, .color-skin-13 .pagination > .active > a:hover, .color-skin-13 .pagination > .active > span:hover, .color-skin-13 .pagination > .active > a:focus, .color-skin-13 .pagination > .active > span:focus { background-color: #8f3c00; border-color: #8f3c00; }
+.color-skin-14 .pagination > .active > a, .color-skin-14 .pagination > .active > span, .color-skin-14 .pagination > .active > a:hover, .color-skin-14 .pagination > .active > span:hover, .color-skin-14 .pagination > .active > a:focus, .color-skin-14 .pagination > .active > span:focus { background-color: #7a251a; border-color: #7a251a; }
+.color-skin-15 .pagination > .active > a, .color-skin-15 .pagination > .active > span, .color-skin-15 .pagination > .active > a:hover, .color-skin-15 .pagination > .active > span:hover, .color-skin-15 .pagination > .active > a:focus, .color-skin-15 .pagination > .active > span:focus { background-color: #566061; border-color: #566061; }
+.color-skin-16 .pagination > .active > a, .color-skin-16 .pagination > .active > span, .color-skin-16 .pagination > .active > a:hover, .color-skin-16 .pagination > .active > span:hover, .color-skin-16 .pagination > .active > a:focus, .color-skin-16 .pagination > .active > span:focus { background-color: #404747; border-color: #404747; }
