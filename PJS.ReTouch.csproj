@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PJS.ReTouch</RootNamespace>
     <AssemblyName>PJS.ReTouch</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -34,6 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -51,7 +53,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
@@ -134,6 +140,7 @@
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.isotope.min.js" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\jquery.themepunch.revolution.min.js" />
     <Content Include="Scripts\jquery.ui.totop.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\styler.js" />
@@ -143,11 +150,10 @@
     <Content Include="Styles\font-awesome.min.css" />
     <Content Include="Styles\overwrite.css" />
     <Content Include="Styles\prettyPhoto.css" />
+    <Content Include="Styles\settings.css" />
     <Content Include="Styles\skins.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Styles\ui.totop.css" />
-    <None Include="Views\SampleTripel1.cshtml" />
-    <None Include="Views\SampleTripel2.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\Web.config" />
@@ -158,20 +164,6 @@
     <Content Include="Placement.info">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
-      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
-      <Name>Orchard.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
-      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
-      <Name>Orchard.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Modules\Orchard.Themes\Orchard.Themes.csproj">
-      <Project>{cde24a24-01d3-403c-84b9-37722e18dfb7}</Project>
-      <Name>Orchard.Themes</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Zones\" />
@@ -231,7 +223,7 @@
     <Content Include="Views\Widget.Wrapper.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Title.cshtml" />
+    <Content Include="Views\Parts.Title.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\LogOn.cshtml" />
@@ -267,19 +259,19 @@
     <Content Include="Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Search.SearchForm.cshtml" />
+    <Content Include="Views\Parts.Search.SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Common.Body.Summary-BlogPost.cshtml" />
+    <Content Include="Views\Parts.Common.Body.Summary-BlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Tags.ShowTags.cshtml" />
+    <Content Include="Views\Parts.Tags.ShowTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\ListOfComments.cshtml" />
+    <Content Include="Views\Parts.ListOfComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Comment.cshtml" />
+    <Content Include="Views\Parts.Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\CommentAuthor.cshtml" />
@@ -300,10 +292,10 @@
     <Content Include="Views\EditorTemplates\Parts.Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\CommentForm.cshtml" />
+    <Content Include="Views\Parts.CommentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Title-BlogPost.cshtml" />
+    <Content Include="Views\Parts.Title-BlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Pager.cshtml" />
@@ -333,10 +325,10 @@
     <Content Include="Views\Orchard.Search\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Title_Summary.cshtml" />
+    <Content Include="Views\Parts.Title_Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Common.Body.Summary.cshtml" />
+    <Content Include="Views\Parts.Common.Body.Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Orchard.Tags\Home\Search.cshtml" />
@@ -378,52 +370,42 @@
     <Content Include="Views\Content-BlogPost.Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\TagCloud.cshtml" />
+    <Content Include="Views\Parts.TagCloud.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Blogs.RecentBlogPosts.cshtml" />
+    <Content Include="Views\Parts.Blogs.RecentBlogPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\Blogs.BlogArchives.cshtml" />
+    <Content Include="Views\Parts.Blogs.BlogArchives.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ListByArchive.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\OForm.Display.cshtml" />
+    <Content Include="Views\Parts.OForm.Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\TwitterWidget.cshtml" />
+    <Content Include="Views\Parts.TwitterWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Styler.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SampleAbout.cshtml" />
+    <Content Include="Views\Parts.ZenGallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SampleTeam.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SampleServices.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SampleFaqs.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Parts\ZenGallery.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SampleUI.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SampleButtons.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SamplePricing.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\SampleTripel3.cshtml" />
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2d1d92bb-4555-4cbe-8d0e-63563d6ce4c6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839c-39fc-4ceb-a5af-89ca7e87119f}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Themes\Orchard.Themes.csproj">
+      <Project>{cde24a24-01d3-403c-84b9-37722e18dfb7}</Project>
+      <Name>Orchard.Themes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
