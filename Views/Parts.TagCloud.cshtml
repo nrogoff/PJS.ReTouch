@@ -1,4 +1,4 @@
-﻿@using Vandelay.Industries.Models
+﻿@using Orchard.Tags.Models
 
 <ul class="widget-list">
     @foreach (TagCount tagCount in ((IEnumerable<TagCount>)Model.TagCounts).OrderByDescending(x => x.Count).Take(6)) {
