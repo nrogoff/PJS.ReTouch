@@ -21,7 +21,7 @@ else {
 
             <li>
                 @if (imageField != null) {
-                    foreach (var mediapart in imageField.MediaParts) {
+                    foreach (var mediapart in imageField.MediaParts.Take(1)) {
                         <img src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" class="img-responsive" />
                     }
                 }
