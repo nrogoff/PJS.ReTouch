@@ -23,25 +23,27 @@
 <p>@T("Use the form below to create a new account.")</p>
 <p>@T("Passwords are required to be a minimum of {0} characters in length.", ViewData["PasswordLength"])</p>
 
-@using (Html.BeginFormAntiForgeryPost(Url.Action("Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
-    <div class="form-group">
-        <label for="username" class="control-label">@T("Username")</label>
-        @Html.TextBox("username", "", new { @class = "form-control", id = "username", autofocus = "autofocus", placeholder = "Username" })
-    </div>
-    <div class="form-group">
-        <label for="email" class="control-label">@T("Email")</label>
-        @Html.TextBox("email", "", new { @class = "form-control", id = "email", placeholder = "Email" })
-    </div>
-    <div class="form-group">
-        <label for="password" class="control-label">@T("Password")</label>
-        @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
-    </div>
-    <div class="form-group">
-        <label for="confirmPassword" class="control-label">@T("Confirm Password")</label>
-        @Html.Password("confirmPassword", null, new { @class = "form-control", placeholder = "Confirm Password" })
-    </div>
-    <div class="form-group">
-        <span class="pull-right" style="margin: 10px 0;">Already have an account? @Html.ActionLink(T("Sign In").ToString(), "LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { Controller = "Account", Area = "Orchard.Users" })</span>
-        <button type="submit" class="btn btn-default">@T("Sign Up")</button>
-    </div>
-}
+<div class="row">
+    @using (Html.BeginFormAntiForgeryPost(Url.Action("Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
+        <div class="form-group">
+            <label for="username" class="control-label">@T("Username")</label>
+            @Html.TextBox("username", "", new { @class = "form-control", id = "username", autofocus = "autofocus", placeholder = "Username" })
+        </div>
+        <div class="form-group">
+            <label for="email" class="control-label">@T("Email")</label>
+            @Html.TextBox("email", "", new { @class = "form-control", id = "email", placeholder = "Email" })
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">@T("Password")</label>
+            @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" class="control-label">@T("Confirm Password")</label>
+            @Html.Password("confirmPassword", null, new { @class = "form-control", placeholder = "Confirm Password" })
+        </div>
+        <div class="form-group">
+            <span class="pull-right" style="margin: 10px 0;">Already have an account? @Html.ActionLink(T("Sign In").ToString(), "LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { Controller = "Account", Area = "Orchard.Users" })</span>
+            <button type="submit" class="btn btn-default">@T("Sign Up")</button>
+        </div>
+    }
+</div>
