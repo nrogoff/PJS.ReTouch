@@ -35,7 +35,7 @@
 
 <p>
     @T("Please enter your username and password. ")
-    @if (userCanRegister) { @Html.ActionLink(T("Register").Text, "Register") @T(" if you don't have an account.") }
+    @if (userCanRegister) { @Html.ActionLink(T("Register").Text, "Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }) @T(" if you don't have an account.") }
 </p>
 
 @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
