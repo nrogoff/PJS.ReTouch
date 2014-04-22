@@ -38,24 +38,26 @@
     @if (userCanRegister) { @Html.ActionLink(T("Register").Text, "Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }) @T(" if you don't have an account.") }
 </p>
 
-@using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
-    <div class="form-group">
-        <label for="username-email" class="control-label">@T("Username or Email")</label>
-        @Html.TextBox("userNameOrEmail", "", new { @class = "form-control", id = "username-email", autofocus = "autofocus", placeholder = "Username or Email" })
-    </div>
-    <div class="form-group">
-        @if (enableLostPassword) { 
-            @Html.ActionLink(T("Forgot password?").Text, "RequestLostPassword", null, new { @class = "pull-right" })
-        }
-        <label for="password" class="control-label">@T("Password")</label>
-        @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
-    </div>
-    <div class="checkbox pull-right">
-        <label for="remember-me">
-            @Html.CheckBox("rememberMe", new { id = "remember-me" })
-            <input type="checkbox">
-            @T("Remember Me")
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">@T("Sign In")</button>
-}
+<div class="row">
+    @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "col-xs-12 col-md-6" })) {
+        <div class="form-group">
+            <label for="username-email" class="control-label">@T("Username or Email")</label>
+            @Html.TextBox("userNameOrEmail", "", new { @class = "form-control", id = "username-email", autofocus = "autofocus", placeholder = "Username or Email" })
+        </div>
+        <div class="form-group">
+            @if (enableLostPassword) { 
+                @Html.ActionLink(T("Forgot password?").Text, "RequestLostPassword", null, new { @class = "pull-right" })
+            }
+            <label for="password" class="control-label">@T("Password")</label>
+            @Html.Password("password", null, new { @class = "form-control", placeholder = "Password" })
+        </div>
+        <div class="checkbox pull-right">
+            <label for="remember-me">
+                @Html.CheckBox("rememberMe", new { id = "remember-me" })
+                <input type="checkbox">
+                @T("Remember Me")
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">@T("Sign In")</button>
+    }
+</div>
